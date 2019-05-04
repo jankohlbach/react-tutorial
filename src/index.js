@@ -127,9 +127,16 @@ class Game extends React.Component {
         'Go to move #' + move :
         'Go to game start';
       const place = step.box;
+      let selected = false;
+      if (move === this.state.stepNumber) {
+        selected = true;
+      }
+
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}<br />{'marked: ' + place}</button>
+          <button onClick={() => this.jumpTo(move)}>
+            {selected ? <b>{desc}<br />{'marked: ' + place}</b> : <span>{desc}<br />{'marked: ' + place}</span>}
+          </button>
         </li>
       );
     });
